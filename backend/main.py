@@ -1,22 +1,16 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from pydantic import BaseModel
-from sentence_transformers import SentenceTransformer, util
+from typing import List, Dict, Optional
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
 
-app = FastAPI()
+model = SentenceTransformer('all-MiniLM-L6-v2')
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+from .culture_profiles import PREDEFINED_PROFILES
 
-class TextInput(BaseModel):
-    text: str
+app = FastAPI(
+    title = "Culture Fit & Role Match Analyzer Backend",
+    description = "AI-powered service to analyze text for company culture and tech-role fit."
+)
 
-@app.get("/")
-def root():
-    return {"message": "FastAPI is working!"}
-
-@app.post("/test-embedding")
-def test_embedding(input: TextInput):
-    embedding = model.encode(input.text, convert_to_tensor=True)
-    return {
-        "message": "Embedding successful",
-        "vector_length": embedding.shape[0]
-    }

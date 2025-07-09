@@ -7,7 +7,7 @@ import numpy as np
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-from .culture_profiles import PREDEFINED_PROFILES
+from .data.culture_profiles import PREDEFINED_PROFILES
 
 app = FastAPI(
     title = "Culture Fit & Role Match Analyzer Backend",

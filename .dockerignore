@@ -1,0 +1,27 @@
+# Global .gitignore for the CultureAnalyzer monorepo
+
+# VS Code related
+.vscode/ # Ignored by default, but good to explicitly include if you have workspace settings
+
+# Node.js specific ignores (for frontend)
+/frontend/node_modules/
+/frontend/build/
+/frontend/dist/
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+/frontend/.env # Or specific frontend .env files
+
+# Python specific ignores (for backend)
+/backend/.venv/
+/backend/__pycache__/
+/backend/*.pyc
+/backend/*.pyo
+/backend/*.pyd
+/backend/.pytest_cache/
+/backend/.mypy_cache/
+/backend/.env # Or specific backend .env files
+
+# Operating System specific
+.DS_Store # macOS
+Thumbs.db # Windows

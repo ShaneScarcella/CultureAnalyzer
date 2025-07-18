@@ -29,8 +29,8 @@ FROM python:3.10-slim
 
 # Set environment variables to ensure logs are sent straight to the terminal
 # and to prevent Python from writing .pyc files.
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 # Set the working directory for the application
 WORKDIR /app
